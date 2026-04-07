@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - BEH Music</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        /* Background Gelap Spotify dengan aksen radial hijau */
+        body { 
+            background: radial-gradient(circle at bottom right, #1db95422, #121212 70%); 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .card { 
+            background-color: #181818; 
+            border: none; 
+            border-radius: 12px; 
+            padding: 40px; 
+            width: 400px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); 
+        }
+
+        .form-control { 
+            background-color: #282828; 
+            border: 1px solid #3e3e3e; 
+            color: white; 
+            padding: 12px; 
+            border-radius: 8px; 
+        }
+
+        .form-control:focus { 
+            background-color: #333; 
+            border-color: #1DB954; 
+            color: white; 
+            box-shadow: none; 
+        }
+
+        /* Tombol Hijau Khas Spotify */
+        .btn-spotify { 
+            background-color: #1DB954; 
+            color: black; 
+            font-weight: bold; 
+            border-radius: 50px; 
+            padding: 14px; 
+            border: none; 
+            width: 100%; 
+            transition: 0.3s; 
+            margin-top: 20px; 
+        }
+
+        .btn-spotify:hover { 
+            background-color: #1ed760; 
+            transform: scale(1.02); 
+            color: black;
+        }
+
+        a { 
+            color: #1DB954; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.2s;
+        }
+
+        a:hover {
+            color: #1ed760;
+            text-decoration: underline;
+        }
+
+        .text-secondary {
+            color: #b3b3b3 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="card text-center">
+        <div class="mb-4">i>
+            <h2 class="fw-bold mt-2" style="color: #b3b3b3;">Daftar Gratis</h2>  
+            <p class="text-secondary small">Buat akun untuk mulai mendengarkan</p>
+        </div>
+
+        <form action="/register" method="POST">
+            <div class="mb-3 text-start">
+                <label class="small fw-bold text-secondary ms-1">Apa username kamu?</label>
+                <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
+            </div>
+            
+            <div class="mb-3 text-start">
+                <label class="small fw-bold text-secondary ms-1">Buat password</label>
+                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+            </div>
+
+            <button type="submit" class="btn btn-spotify">DAFTAR SEKARANG</button>
+        </form>
+
+        <hr class="my-4" style="border-color: #3e3e3e;">
+
+        <p class="small text-secondary">
+            Sudah punya akun? <a href="/login">Masuk di sini</a>
+        </p>
+    </div>
+</body>
+</html>
