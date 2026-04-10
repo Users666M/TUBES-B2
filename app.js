@@ -99,6 +99,25 @@ app.get('/admin/songs/delete/:id', (req, res) => {
     });
 });
 
+// Route untuk tampilkan halaman edit
+app.get('/admin/songs/edit/:id', (req, res) => {
+    const { id } = req.params;
+    db.query('SELECT * FROM songs WHERE id = ?', [id], (err, results) => {
+        if (err) throw err;
+        res.render('edit_song', { song: results[0] });
+    });
+});
+
+// Route untuk proses simpan hasil edit
+app.post('/admin/songs/update/:id', (req, res) => {
+    const { id } = req.params;
+    const { title, artist, url, lyrics, image_url } = req.body;
+    const query = 'UPDATE songs SET title=?, artist=?, url=?, lyrics=?, image_url=? WHERE id=?';
+    db.query(query, [title, artist, url, lyrics, image_url, id], (err) => {
+        if (err) throw err;
+        res.redirect('/admin/songs');
+    });
+});
 // --- [ADMIN] LIHAT DAFTAR USER ---
 // Rute untuk menampilkan daftar user (Pemicu "Cannot GET" tadi)
 app.get('/admin/users', (req, res) => {
