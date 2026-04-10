@@ -77,10 +77,16 @@ app.get('/admin/songs', (req, res) => {
 });
 
 app.post('/admin/songs/add', (req, res) => {
-    const { title, artist, url, lyrics } = req.body;
-    db.query('INSERT INTO songs (title, artist, url, lyrics) VALUES (?, ?, ?, ?)', 
-    [title, artist, url, lyrics], (err) => {
-        if (err) throw err;
+    // 1. Tambahkan image_url di sini
+    const { title, artist, url, lyrics, image_url } = req.body; 
+    
+    // 2. Tambahkan kolom image_url dan tanda tanya (?) jadi 5
+    db.query('INSERT INTO songs (title, artist, url, lyrics, image_url) VALUES (?, ?, ?, ?, ?)', 
+    [title, artist, url, lyrics, image_url], (err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Gagal menambah lagu');
+        }
         res.redirect('/admin/songs');
     });
 });
